@@ -128,9 +128,14 @@ namespace CTrue.FsConnect
         }
 
         /// <inheritdoc />
-        public void RequestData(Enum requestId)
+        public void RequestData(Enum requestId, Enum defineId)
         {
-            _simConnect?.RequestDataOnSimObjectType( requestId, DEFINITIONS.Struct1, 0, SIMCONNECT_SIMOBJECT_TYPE.USER);
+            try
+            {
+                _simConnect?.RequestDataOnSimObjectType(requestId, defineId, 0, SIMCONNECT_SIMOBJECT_TYPE.USER);
+            } catch (Exception e) {
+                Disconnect();
+            }
         }
 
         /// <inheritdoc />

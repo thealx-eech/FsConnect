@@ -79,7 +79,7 @@ namespace CTrue.FsConnect.TestConsole
 
                 _fsConnect.SetText("Test Console connected", 2);
 
-                _fsConnect.RequestData(Requests.PlaneInfo);
+                _fsConnect.RequestData(Requests.PlaneInfo, Definitions.PlaneInfo);
 
                 while (cki.Key != ConsoleKey.Escape)
                 {
@@ -161,7 +161,7 @@ namespace CTrue.FsConnect.TestConsole
 
         private static void PollFlightSimulator()
         {
-            _fsConnect.RequestData(Requests.PlaneInfo);
+            _fsConnect.RequestData(Requests.PlaneInfo, Definitions.PlaneInfo);
         }
 
         private static void InitializeDataDefinitions(FsConnect fsConnect)

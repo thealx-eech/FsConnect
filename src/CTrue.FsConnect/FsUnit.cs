@@ -7,9 +7,13 @@ namespace CTrue.FsConnect
         None,
         Degrees,
         Radians,
+        RadianPerSecond,
         Feet,
         Meter,
-        MeterPerSecond
+        MeterPerSecond,
+        Boolean,
+        Second,
+        Percent
     }
 
     public static class UnitFactory
@@ -21,9 +25,13 @@ namespace CTrue.FsConnect
             _enumToCodeDictionary.Add(FsUnit.None, null);
             _enumToCodeDictionary.Add(FsUnit.Degrees, "degrees");
             _enumToCodeDictionary.Add(FsUnit.Radians, "radians");
+            _enumToCodeDictionary.Add(FsUnit.RadianPerSecond, "radian per second");
             _enumToCodeDictionary.Add(FsUnit.Feet, "feet");
             _enumToCodeDictionary.Add(FsUnit.Meter, "meter");
             _enumToCodeDictionary.Add(FsUnit.MeterPerSecond, "meter per second");
+            _enumToCodeDictionary.Add(FsUnit.Boolean, "boolean");
+            _enumToCodeDictionary.Add(FsUnit.Second, "second");
+            _enumToCodeDictionary.Add(FsUnit.Percent, "percent");
         }
 
         /// <summary>

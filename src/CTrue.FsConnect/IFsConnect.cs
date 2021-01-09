@@ -65,7 +65,7 @@ namespace CTrue.FsConnect
         /// <summary>
         /// Requests data from Flight Simulator.
         /// </summary>
-        void RequestData(Enum requestId);
+        void RequestData(Enum requestId, Enum defineId);
 
         /// <summary>
         /// Registers data structures for requesting data from Flight Simulator.
