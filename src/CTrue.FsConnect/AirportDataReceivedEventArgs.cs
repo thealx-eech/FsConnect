@@ -5,7 +5,7 @@ namespace CTrue.FsConnect
     /// <summary>
     /// Used to hold data received from Flight Simulator.
     /// </summary>
-    public class FsDataReceivedEventArgs : EventArgs
+    public class AirportDataReceivedEventArgs : EventArgs
     {
         /// <summary>
         /// The request id of the received data.

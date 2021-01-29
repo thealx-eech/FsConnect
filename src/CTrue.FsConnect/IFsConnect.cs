@@ -22,6 +22,9 @@ namespace CTrue.FsConnect
         /// </summary>
         event EventHandler<FsDataReceivedEventArgs> FsDataReceived;
 
+        event EventHandler<AirportDataReceivedEventArgs> AirportDataReceived;
+
+        event EventHandler<ObjectAddremoveEventReceivedEventArgs> ObjectAddremoveEventReceived;
         /// <summary>
         /// The <see cref="FsError"/> event is raised when an error has been raised by SimConnect.
         /// </summary>
@@ -65,7 +68,7 @@ namespace CTrue.FsConnect
         /// <summary>
         /// Requests data from Flight Simulator.
         /// </summary>
-        void RequestData(Enum requestId, Enum defineId);
+        void RequestData(Enum requestId, Enum defineId, uint radius = 0, SIMCONNECT_SIMOBJECT_TYPE type = SIMCONNECT_SIMOBJECT_TYPE.USER);
 
         /// <summary>
         /// Registers data structures for requesting data from Flight Simulator.
@@ -88,6 +91,12 @@ namespace CTrue.FsConnect
         /// <param name="id"></param>
         /// <param name="data"></param>
         /// <typeparam name="T"></typeparam>
-        void UpdateData<T>(Enum id, T data);
+        void UpdateData<T>(Enum id, T data, uint ObjID = 1);
+
+        void CreateEnrouteATCAircraft(string szFlightPlanPath, string title, double position, Enum RequestID);
+        void LoadParkedATCAircraft(string icao, string title, Enum RequestID);
+        void CreateNonATCAircraft(SIMCONNECT_DATA_INITPOSITION InitPos, string title, Enum RequestID);
+        void AIReleaseControl(uint ObjectID, Enum RequestID);
+        void AISetAircraftFlightPlan(uint ObjectID, string szFlightPlanPath, Enum RequestID);
     }
 }

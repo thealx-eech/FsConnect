@@ -5,6 +5,7 @@ namespace CTrue.FsConnect
     public enum FsSimVar
     {
         Title,
+        Category,
         PlaneLatitude,
         PlaneLongitude,
         PlaneAltitudeAboveGround,
@@ -30,6 +31,8 @@ namespace CTrue.FsConnect
         AbsoluteTime,
         TailhookPosition,
         LaunchbarPosition,
+        WaterRudderHandlePosition,
+        OnAnyRunway,
         // LIGHTS
         LIGHTPANEL,
         LIGHTSTROBE,
@@ -44,8 +47,9 @@ namespace CTrue.FsConnect
         LIGHTGLARESHIELD,
         LIGHTPEDESTRAL,
         LIGHTPOTENTIOMETER,
-        FSSIMVAR_LAST
-}
+        FSSIMVAR_LAST,
+        ATCFLIGHTNUMBER,
+    }
 
     public static class FsSimVarFactory
     {
@@ -54,6 +58,7 @@ namespace CTrue.FsConnect
         static FsSimVarFactory()
         {
             _enumToCodeDictionary.Add(FsSimVar.Title, "TITLE");
+            _enumToCodeDictionary.Add(FsSimVar.Category, "CATEGORY");
             _enumToCodeDictionary.Add(FsSimVar.PlaneLatitude, "PLANE LATITUDE");
             _enumToCodeDictionary.Add(FsSimVar.PlaneLongitude, "PLANE LONGITUDE");
             _enumToCodeDictionary.Add(FsSimVar.PlaneAltitudeAboveGround, "PLANE ALT ABOVE GROUND");
@@ -78,7 +83,9 @@ namespace CTrue.FsConnect
             _enumToCodeDictionary.Add(FsSimVar.BrakeParkingPosition, "BRAKE PARKING POSITION");
             _enumToCodeDictionary.Add(FsSimVar.AbsoluteTime, "ABSOLUTE TIME");
             _enumToCodeDictionary.Add(FsSimVar.TailhookPosition, "TAILHOOK POSITION");
-            _enumToCodeDictionary.Add(FsSimVar.LaunchbarPosition, "LAUNCHBAR POSITION"); 
+            _enumToCodeDictionary.Add(FsSimVar.LaunchbarPosition, "LAUNCHBAR POSITION");
+            _enumToCodeDictionary.Add(FsSimVar.WaterRudderHandlePosition, "WATER RUDDER HANDLE POSITION");
+            _enumToCodeDictionary.Add(FsSimVar.OnAnyRunway, "ON ANY RUNWAY");
             // LIGHTS
            _enumToCodeDictionary.Add(FsSimVar.LIGHTPANEL, "LIGHT PANEL");
            _enumToCodeDictionary.Add(FsSimVar.LIGHTSTROBE, "LIGHT STROBE");
@@ -93,7 +100,8 @@ namespace CTrue.FsConnect
            _enumToCodeDictionary.Add(FsSimVar.LIGHTGLARESHIELD, "LIGHT GLARESHIELD");
            _enumToCodeDictionary.Add(FsSimVar.LIGHTPEDESTRAL, "LIGHT PEDESTRAL");
            _enumToCodeDictionary.Add(FsSimVar.LIGHTPOTENTIOMETER, "LIGHT POTENTIOMETER");
-
+            // AI
+            _enumToCodeDictionary.Add(FsSimVar.ATCFLIGHTNUMBER, "ATC FLIGHT NUMBER");
 
             //(A: TOW RELEASE HANDLE, percent)
             //ROTATION VELOCITY BODY, degree per second
