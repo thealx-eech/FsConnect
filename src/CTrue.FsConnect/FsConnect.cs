@@ -30,6 +30,14 @@ namespace CTrue.FsConnect
             TowPlane = 4,
             Airport = 5,
             SystemEvents = 6,
+            TowPlaneCommit = 7,
+            PlaneEngineData = 8,
+            Paused = 9,
+            Unpaused = 10,
+            PositionChanged = 11,
+            SimStart = 12,
+            SimStop = 13,
+            WeatherData = 14,
         }
 
         #endregion
@@ -87,10 +95,16 @@ namespace CTrue.FsConnect
 
             _simConnect.OnRecvException += new SimConnect.RecvExceptionEventHandler(SimConnect_OnRecvException);
             _simConnect.OnRecvSimobjectDataBytype += new SimConnect.RecvSimobjectDataBytypeEventHandler(SimConnect_OnRecvSimobjectDataBytype);
-            _simConnect.OnRecvAirportList += new SimConnect.RecvAirportListEventHandler(SimConnect_OnRecvAirportListEventHandler);
-            _simConnect.OnRecvEventObjectAddremove += new SimConnect.RecvEventObjectAddremoveEventHandler(SimConnect_OnRecvEventObjectAddremoveEventHandler); 
+            //_simConnect.OnRecvAirportList += new SimConnect.RecvAirportListEventHandler(SimConnect_OnRecvAirportListEventHandler);
+            _simConnect.OnRecvEventObjectAddremove += new SimConnect.RecvEventObjectAddremoveEventHandler(SimConnect_OnRecvEventObjectAddremoveEventHandler);
+            //_simConnect.OnRecvEvent += new SimConnect.RecvEventEventHandler(SimConnect_OnRecvEventEventHandler);
 
             _simConnect.SubscribeToSystemEvent(Definitions.SystemEvents, "ObjectAdded");
+            //_simConnect.SubscribeToSystemEvent(Definitions.Paused, "Paused");
+            //_simConnect.SubscribeToSystemEvent(Definitions.Unpaused, "Unpaused");
+            //_simConnect.SubscribeToSystemEvent(Definitions.PositionChanged, "PositionChanged");
+            //_simConnect.SubscribeToSystemEvent(Definitions.SimStart, "SimStart");
+            //_simConnect.SubscribeToSystemEvent(Definitions.SimStop, "SimStop");
         }
 
         /// <inheritdoc />
@@ -117,11 +131,16 @@ namespace CTrue.FsConnect
                 _simConnect.OnRecvQuit -= new SimConnect.RecvQuitEventHandler(SimConnect_OnRecvQuit);
                 _simConnect.OnRecvException -= new SimConnect.RecvExceptionEventHandler(SimConnect_OnRecvException);
                 _simConnect.OnRecvSimobjectDataBytype -= new SimConnect.RecvSimobjectDataBytypeEventHandler(SimConnect_OnRecvSimobjectDataBytype);
-                _simConnect.OnRecvAirportList -= new SimConnect.RecvAirportListEventHandler(SimConnect_OnRecvAirportListEventHandler);
+                //_simConnect.OnRecvAirportList -= new SimConnect.RecvAirportListEventHandler(SimConnect_OnRecvAirportListEventHandler);
                 _simConnect.OnRecvEventObjectAddremove -= new SimConnect.RecvEventObjectAddremoveEventHandler(SimConnect_OnRecvEventObjectAddremoveEventHandler);
+                //_simConnect.OnRecvEvent -= new SimConnect.RecvEventEventHandler(SimConnect_OnRecvEventEventHandler);
 
                 _simConnect.UnsubscribeFromSystemEvent(Definitions.SystemEvents);
-
+                //_simConnect.UnsubscribeFromSystemEvent(Definitions.Paused);
+                //_simConnect.UnsubscribeFromSystemEvent(Definitions.Unpaused);
+                //_simConnect.UnsubscribeFromSystemEvent(Definitions.PositionChanged);
+                //_simConnect.UnsubscribeFromSystemEvent(Definitions.SimStart);
+                //_simConnect.UnsubscribeFromSystemEvent(Definitions.SimStop);
                 _simConnect.Dispose();
             }
             catch (Exception e)
@@ -223,6 +242,16 @@ namespace CTrue.FsConnect
                 RequestId = recEvent.uEventID,
                 Data = recEvent.dwData,
                 ObjectID = recEvent.dwID
+            });
+        }
+
+        private void SimConnect_OnRecvEventEventHandler(SimConnect sender, SIMCONNECT_RECV_EVENT data)
+        {
+            ObjectAddremoveEventReceived?.Invoke(this, new ObjectAddremoveEventReceivedEventArgs()
+            {
+                RequestId = data.uEventID,
+                Data = data.dwData,
+                ObjectID = data.dwID
             });
         }
 

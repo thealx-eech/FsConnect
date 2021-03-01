@@ -16,6 +16,7 @@ namespace CTrue.FsConnect
         PlaneBank,
         GpsGroundSpeed,
         AirspeedTrue,
+        AirspeedIndicated,
         Verticalspeed,
         VelocityWorldX,
         VelocityWorldY,
@@ -33,6 +34,25 @@ namespace CTrue.FsConnect
         LaunchbarPosition,
         WaterRudderHandlePosition,
         OnAnyRunway,
+        IsSlewActive,
+
+        // WEATHER
+        AmbientDensity,
+        AmbientTemperature,
+        AmbientPressure,
+        AmbientWindVelocity,
+        AmbientWindDirection,
+        AmbientPrecipState,
+        AmbientBarometerPressure,
+        AmbientSeaLevelPressure,
+        AmbientAirTemperature,
+        AmbientInCloud,
+        AmbientVisibility,
+        AmbientStandardAtmTemperature,
+        LocalDayOfYear,
+        TimeOfDay,
+        LocalTime,
+
         // LIGHTS
         LIGHTPANEL,
         LIGHTSTROBE,
@@ -49,6 +69,14 @@ namespace CTrue.FsConnect
         LIGHTPOTENTIOMETER,
         FSSIMVAR_LAST,
         ATCFLIGHTNUMBER,
+        TURBTHRUST1,
+        TURBTHRUST2,
+        TURBTHRUST3,
+        TURBTHRUST4,
+        ENGTORQUE1,
+        ENGTORQUE2,
+        ENGTORQUE3,
+        ENGTORQUE4,
     }
 
     public static class FsSimVarFactory
@@ -69,6 +97,7 @@ namespace CTrue.FsConnect
             _enumToCodeDictionary.Add(FsSimVar.PlaneBank, "PLANE BANK DEGREES");
             _enumToCodeDictionary.Add(FsSimVar.GpsGroundSpeed, "GPS GROUND SPEED");
             _enumToCodeDictionary.Add(FsSimVar.AirspeedTrue, "AIRSPEED TRUE");
+            _enumToCodeDictionary.Add(FsSimVar.AirspeedIndicated, "AIRSPEED INDICATED");
             _enumToCodeDictionary.Add(FsSimVar.Verticalspeed, "VERTICAL SPEED");
             _enumToCodeDictionary.Add(FsSimVar.VelocityWorldX, "VELOCITY WORLD X");
             _enumToCodeDictionary.Add(FsSimVar.VelocityWorldY, "VELOCITY WORLD Y");
@@ -86,8 +115,27 @@ namespace CTrue.FsConnect
             _enumToCodeDictionary.Add(FsSimVar.LaunchbarPosition, "LAUNCHBAR POSITION");
             _enumToCodeDictionary.Add(FsSimVar.WaterRudderHandlePosition, "WATER RUDDER HANDLE POSITION");
             _enumToCodeDictionary.Add(FsSimVar.OnAnyRunway, "ON ANY RUNWAY");
+            _enumToCodeDictionary.Add(FsSimVar.IsSlewActive, "IS SLEW ACTIVE");
+
+            // AMBIENT
+            _enumToCodeDictionary.Add(FsSimVar.AmbientDensity, "AMBIENT DENSITY");
+            _enumToCodeDictionary.Add(FsSimVar.AmbientTemperature, "AMBIENT TEMPERATURE");
+            _enumToCodeDictionary.Add(FsSimVar.AmbientPressure, "AMBIENT PRESSURE");
+            _enumToCodeDictionary.Add(FsSimVar.AmbientWindVelocity, "AMBIENT WIND VELOCITY");
+            _enumToCodeDictionary.Add(FsSimVar.AmbientWindDirection, "AMBIENT WIND DIRECTION");
+            _enumToCodeDictionary.Add(FsSimVar.AmbientPrecipState, "AMBIENT PRECIP STATE");
+            _enumToCodeDictionary.Add(FsSimVar.AmbientBarometerPressure, "BAROMETER PRESSURE");
+            _enumToCodeDictionary.Add(FsSimVar.AmbientSeaLevelPressure, "SEA LEVEL PRESSURE");
+            _enumToCodeDictionary.Add(FsSimVar.AmbientAirTemperature, "TOTAL AIR TEMPERATURE");
+            _enumToCodeDictionary.Add(FsSimVar.AmbientInCloud, "AMBIENT IN CLOUD");
+            _enumToCodeDictionary.Add(FsSimVar.AmbientVisibility, "AMBIENT VISIBILITY");
+            _enumToCodeDictionary.Add(FsSimVar.AmbientStandardAtmTemperature, "STANDARD ATM TEMPERATURE");
+            _enumToCodeDictionary.Add(FsSimVar.LocalDayOfYear, "LOCAL DAY OF YEAR");
+            _enumToCodeDictionary.Add(FsSimVar.TimeOfDay, "TIME OF DAY");
+            _enumToCodeDictionary.Add(FsSimVar.LocalTime, "LOCAL TIME"); 
+
             // LIGHTS
-           _enumToCodeDictionary.Add(FsSimVar.LIGHTPANEL, "LIGHT PANEL");
+            _enumToCodeDictionary.Add(FsSimVar.LIGHTPANEL, "LIGHT PANEL");
            _enumToCodeDictionary.Add(FsSimVar.LIGHTSTROBE, "LIGHT STROBE");
            _enumToCodeDictionary.Add(FsSimVar.LIGHTLANDING, "LIGHT LANDING");
            _enumToCodeDictionary.Add(FsSimVar.LIGHTTAXI, "LIGHT TAXI");
@@ -102,6 +150,18 @@ namespace CTrue.FsConnect
            _enumToCodeDictionary.Add(FsSimVar.LIGHTPOTENTIOMETER, "LIGHT POTENTIOMETER");
             // AI
             _enumToCodeDictionary.Add(FsSimVar.ATCFLIGHTNUMBER, "ATC FLIGHT NUMBER");
+
+            // ENGINE
+            _enumToCodeDictionary.Add(FsSimVar.TURBTHRUST1, "TURB ENG JET THRUST:1");
+            _enumToCodeDictionary.Add(FsSimVar.TURBTHRUST2, "TURB ENG JET THRUST:2");
+            _enumToCodeDictionary.Add(FsSimVar.TURBTHRUST3, "TURB ENG JET THRUST:3");
+            _enumToCodeDictionary.Add(FsSimVar.TURBTHRUST4, "TURB ENG JET THRUST:4");
+            _enumToCodeDictionary.Add(FsSimVar.ENGTORQUE1, "ENG TORQUE:1");
+            _enumToCodeDictionary.Add(FsSimVar.ENGTORQUE2, "ENG TORQUE:2");
+            _enumToCodeDictionary.Add(FsSimVar.ENGTORQUE3, "ENG TORQUE:3");
+            _enumToCodeDictionary.Add(FsSimVar.ENGTORQUE4, "ENG TORQUE:4");
+
+
 
             //(A: TOW RELEASE HANDLE, percent)
             //ROTATION VELOCITY BODY, degree per second

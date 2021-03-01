@@ -13,7 +13,14 @@ namespace CTrue.FsConnect
         MeterPerSecond,
         Boolean,
         Second,
-        Percent
+        Percent,
+        FootPounds,
+        SlugsPerCubiFeet,
+        Celsius,
+        inHg,
+        Mask,
+        Millibars,
+        Rankine,
     }
 
     public static class UnitFactory
@@ -32,6 +39,15 @@ namespace CTrue.FsConnect
             _enumToCodeDictionary.Add(FsUnit.Boolean, "boolean");
             _enumToCodeDictionary.Add(FsUnit.Second, "second");
             _enumToCodeDictionary.Add(FsUnit.Percent, "percent");
+            _enumToCodeDictionary.Add(FsUnit.FootPounds, "foot pounds");
+
+            // WEATHER
+            _enumToCodeDictionary.Add(FsUnit.SlugsPerCubiFeet, "Slugs per cubic feet");
+            _enumToCodeDictionary.Add(FsUnit.Celsius, "Celsius");
+            _enumToCodeDictionary.Add(FsUnit.inHg, "inHg");
+            _enumToCodeDictionary.Add(FsUnit.Mask, "Mask");
+            _enumToCodeDictionary.Add(FsUnit.Millibars, "Millibars");
+            _enumToCodeDictionary.Add(FsUnit.Rankine, "Rankine"); 
         }
 
         /// <summary>
